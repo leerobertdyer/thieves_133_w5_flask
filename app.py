@@ -9,7 +9,7 @@ myPokemons = []
 def pokemonForm():
     if request.method == 'POST':
         pokemonName = request.form['pokemonName'].lower()
-        r = requests.get('https://pokeapi.co/api/v2/pokemon/')
+        r = requests.get('https://pokeapi.co/api/v2/pokemon/?limit=1292')
         data = r.json()['results']
         pokemonUrl = ''
         for pokemon in data:
@@ -20,7 +20,7 @@ def pokemonForm():
             stats = requests.get(pokemonUrl).json()
             return render_template('card.html', pokemonName=pokemonName, stats=stats)
         else:
-            return render_template('pokemonForm.html')
+            return render_template('holyshit.html')
     else:
         return render_template('pokemonForm.html')
 
@@ -29,7 +29,10 @@ def card():
     pokemonName = "Charizar"
     return render_template('card.html', pokemonName=pokemonName)
 
-@app.route('/holyshit')
+@app.route('/holyshit', methods=["GET", "POST"])
 def holyShit():
-    return render_template('holyshit.html')
+    if request.method == "GET":
+        return render_template('holyshit.html')
+    else:
+        return render_template('pokemonForm.html')
 

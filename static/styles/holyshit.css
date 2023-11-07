@@ -19,3 +19,24 @@
     border: solid rgb(36, 13, 1) 2px;
     border-radius: 30%;
 }
+
+.errorMessage {
+    color: red;
+    background-color: black;
+    border: white dotted 2px;
+    border-radius: 12px;
+    margin-top: 100px;
+}
+
+.submitButton {
+    padding: 5px;
+    background-color: antiquewhite;
+    color: black;
+    border: solid red 2px;
+    border-radius: 22px;
+}
+
+.submitButton:hover {
+    background-color: black;
+    color: red;
+}

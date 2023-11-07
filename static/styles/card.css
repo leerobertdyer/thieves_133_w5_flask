@@ -1,0 +1,5 @@
+
+.sprite:hover {
+    transition: 2s;
+    transform: scale(355%);
+}
