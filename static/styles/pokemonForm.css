@@ -1,0 +1,33 @@
+* {
+    background-color: teal;
+    color: gold;
+}
+
+.pokemonForm {
+    margin: 45px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: black double 22px;
+    padding: 55px;
+}
+
+.pokemonInput {
+    color: gold;
+    background-color: black;
+    border: solid gold 3px;
+    border-radius: 12px;
+    padding: 10px;
+} 
+.pokemonInput::placeholder {
+    color: rgb(82, 74, 74);
+}
+
+.submit {
+    cursor: pointer;
+}
+.submit:hover {
+    background-color: gold;
+    color: black;
+}
