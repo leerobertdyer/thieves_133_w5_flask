@@ -4,23 +4,16 @@
 
 {% extends 'base.html' %}
 
-{% block title %}
-Holy Shit!
-{% endblock %}
-
 {% block content %}
 
-<article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+<article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10 shadow-5">
     <div class="tc">
-      <img src="https://media.istockphoto.com/id/1483360428/photo/cute-young-tabby-cat-playing-in-a-garden.webp?b=1&s=170667a&w=0&k=20&c=dw4l18FO9_MDnWPyD6flSoUYim3p52m2_PcCNVWFz_4=" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
-      <h1 class="f4">Mimi Whitehouse</h1>
+      <img src={{ stats['sprites']['other']['official-artwork']['front_default'] }} class="br-100 h3 w3 dib" title="Photo of a kitty staring at you">
+      <h1 class="f4">{{pokemonName}}</h1>
       <hr class="mw3 bb bw1 b--black-10">
     </div>
-    <p class="lh-copy measure center f6 black-70">
-      Quite affectionate and outgoing.
-      She loves to get chin scratches and will
-      roll around on the floor waiting for you give her more of them.
-    </p>
+  <h2>Ability: {{stats.abilities[0].ability.name}} </h2>
+ 
   </article>
-  
+  <pre>{{stats}}</pre>
   {% endblock %}
