@@ -14,9 +14,8 @@ PokeBattle!
     <div class="pokemonForm">
         <form method="POST" class="pokemonForm">
                 <label for="pokemonName">Pokemon:</label>
-                <input type="text" name="pokemonName" id="pokemonName" placeholder="Your favorite Pokemon"
-                    class="pokemonInput" />
-                <input type="submit" class="pokemonInput submit" />
+                {{ form.pokemon(class="pokemonInput", placeholder="Your Favorite Pokemon", id="pokemonName") }}
+                {{ form.submit(class="pokemonInput submit") }}
         </form>
     </div>
 </div>
