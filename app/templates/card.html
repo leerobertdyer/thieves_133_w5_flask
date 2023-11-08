@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% extends 'base.html' %}
-
+{% include 'nav.html' %}
 {% block content %}
 
+<div class="top"></div>
 <article class="mw5 center bg-green br3 pa3 pa4-ns mv3 ba b--black-6 shadow-5 flex flex-column items-center justify-center">
     <div class="tc">
       <img src={{ stats['sprites']['other']['official-artwork']['front_default'] }} class="sprite br-100 h3 w3 dib" title={{pokemonName}}>

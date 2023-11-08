@@ -3,3 +3,8 @@
     transition: 2s;
     transform: scale(355%);
 }
+
+.top {
+    height: 200px;
+    padding-top: 200px;
+}
