@@ -12,15 +12,15 @@ PokeBattle!
 
 {% include 'nav.html' %}
 <div class="top"></div>
-<div class="pokemonForm flexy">
-    <h1 class="greeting">Hello Thieves!</h1>
-    <div class="pokemonForm">
+    <div class="pokemonFormContainer">
+        <h1 class="greeting">Choose A Pokemon!</h1>
+
         <form method="POST" class="pokemonForm">
             {{ form.hidden_tag() }}
                 <label for="pokemonName">Pokemon:</label>
                 {{ form.pokemon(class="pokemonInput", placeholder="Your Favorite Pokemon", id="pokemonName") }}
                 {{ form.submit(class="pokemonInput submit") }}
         </form>
-    </div>
+
 </div>
 {% endblock %}

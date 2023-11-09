@@ -1,0 +1,23 @@
+.navContainer {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+}
+
+.navLink:hover {
+    transition: 2s;
+    color: orange;
+    transform: scale(120%);
+}
+
+.myHeader {
+    top: 0;
+}
+
+.bigger {
+    font-size: 24px;
+}

@@ -1,11 +1,14 @@
 {% block styles %}
-<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+<link rel="stylesheet" href="../static/styles/nav.css">
 {% endblock %}
 
 {% block content %}
-<header class="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-    <nav class="f6 fw6 ttu tracked">
-      <a class="link dim white dib mr3" href="/" title="Home">Home</a>
+<header class="bg-black fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l myHeader">
+    <nav class="f6 fw6 ttu tracked navContainer">
+      <a class="link dim white mr3 navLink bigger" href="/" title="Home">Home</a>
+      <a class="link dim white mr3 navLink" href="/signup" title="signup">Sign Up</a>
+      <a class="link dim white mr3 navLink" href="/profile" title="profile">Profile</a>
+      <a class="link dim white mr3 navLink" href="/login" title="signup">Login</a>
     </nav>
   </header>
   {% endblock %}

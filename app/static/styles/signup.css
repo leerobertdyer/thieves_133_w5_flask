@@ -1,0 +1,62 @@
+body {
+    background-image: linear-gradient(to bottom, rgba(148, 240, 240, .5), rgba(199, 127, 163, .5)),
+                      url('../images/pikachu.jpeg');
+    background-size: cover; 
+    color: black;
+}
+
+.signupForm {
+    background-color: rgba(255, 207, 145, 0.93);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: black double 22px;
+    border-radius: 12px;
+    width: 90%;
+    min-width: 500px;
+    padding: 20px;
+    gap: 10px;
+    margin: 120px auto;
+}
+
+.header {
+    text-align: center;
+    margin: 0;
+}
+
+.organizeForm {
+display: flex;
+flex-direction: column;
+align-items: space-between;
+}
+
+
+.organizeFormTop {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(218, 143, 143, .5);
+    padding: 20px;
+    border: black solid 1px;
+    border-radius: 4px;;
+}
+
+.signupButton {
+    width: 20%;
+    background-color: goldenrod;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.signupButton:hover {
+    background-color: rgb(218, 143, 143);
+}
+
+.signupInput {
+    padding: 5px;
+}
+
+span {
+    width: 5px;
+}
