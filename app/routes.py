@@ -54,7 +54,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         
-        #flash an f string... I didn't set this up earlier...
+        flash(f'Hello {user.first_name}, thanks for signing up!', 'success')
         return redirect(url_for('login'))
         
     else:
@@ -62,7 +62,11 @@ def signup():
     
 @app.route('/profile', methods=["GET"])
 def profile():
-    return render_template('profile.html')
+    if current_user.is_authenticated:
+        name = current_user.first_name
+    else:
+        name = "Someone"
+    return render_template('profile.html', name=name)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -72,13 +76,16 @@ def login():
         password = request.form['password']
         
         queried_user = User.query.filter(User.email == email).first()
+        print(f"Query: {User.query.filter(User.email == email)}")
+        print(f"Queried User: {queried_user}")
+
         if queried_user and check_password_hash(queried_user.password, password):
             login_user(queried_user)
-            # flash(f'Hello {queried_user.firstname}', flashGreen) - still need to setup flash
+            flash(f'Hello {queried_user.first_name}', 'success') 
             return redirect(url_for('profile'))
         else:
-            # flash('No Such User') FLASH!
-            return redirect(url_for('signup'))
+            flash('No Such User', 'danger')
+            return render_template('login.html', form=form)
     else:
         return render_template('login.html', form=form)
     
@@ -87,5 +94,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    # flash('Successfully logged out', 'cautionFlash') FLASH!
+    flash('Successfully logged out', 'danger')
     return redirect(url_for('login'))
