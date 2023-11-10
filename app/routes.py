@@ -1,12 +1,12 @@
-from flask import request, render_template,redirect, url_for
-
+from flask import request, render_template, redirect, url_for, flash
 import requests
 from app import app
 from .forms import selectPokemon, SignupForm, LoginForm
+from .models import User
+from .models import db  
+from werkzeug.security import check_password_hash
+from flask_login import login_user, logout_user, current_user, login_required
 
-
-myPokemons = []
-REGISTERED_USERS = [{'email': 'lee@leedyer.com', 'password': 'lee'}]
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
@@ -49,13 +49,13 @@ def signup():
         last_name = request.form['last_name']
         email = request.form['email']
         password = request.form['password']
-        for user in REGISTERED_USERS:
-            print(user)
-            # if user['email'] == email:
-            #     return "User already registered, please login" #change to an error.html with nav
-        REGISTERED_USERS.append({(first_name + ' ' + last_name):{'email': email, 'password': password}})
-        print(REGISTERED_USERS)
-        return render_template('profile.html')
+
+        user = User(first_name, last_name, email, password)
+        db.session.add(user)
+        db.session.commit()
+        
+        #flash an f string... I didn't set this up earlier...
+        return redirect(url_for('login'))
         
     else:
         return render_template('signup.html', form=form)
@@ -70,10 +70,22 @@ def login():
     if request.method == "POST" and form.validate_on_submit():
         email = request.form['email']
         password = request.form['password']
-        for user in REGISTERED_USERS:
-            if user['email'] == email:
-                if user['password'] == password:
-                    return render_template('profile.html')
-        return render_template('holyShit.html')
+        
+        queried_user = User.query.filter(User.email == email).first()
+        if queried_user and check_password_hash(queried_user.password, password):
+            login_user(queried_user)
+            # flash(f'Hello {queried_user.firstname}', flashGreen) - still need to setup flash
+            return redirect(url_for('profile'))
+        else:
+            # flash('No Such User') FLASH!
+            return redirect(url_for('signup'))
     else:
         return render_template('login.html', form=form)
+    
+    
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    # flash('Successfully logged out', 'cautionFlash') FLASH!
+    return redirect(url_for('login'))

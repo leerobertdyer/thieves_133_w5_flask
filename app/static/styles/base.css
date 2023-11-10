@@ -13,3 +13,7 @@ body {
     gap: 2vw; 
 }
 
+
+.flashGreen {
+    background-color: rgb(112, 182, 112);
+}
