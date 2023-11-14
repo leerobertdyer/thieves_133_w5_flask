@@ -14,8 +14,14 @@ login_manager.init_app(app)
 db.init_app(app)
 migrate = Migrate(app, db)
 
+from .blueprints.auth import auth
+app.register_blueprint(auth)
+from .blueprints.main import main
+app.register_blueprint(main)
+from .blueprints.errors import errors
+app.register_blueprint(errors)
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
-from app import routes
