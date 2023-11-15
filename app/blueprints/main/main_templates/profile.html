@@ -4,21 +4,19 @@
 
 {% extends 'base.html'%}
 
-
 {% block content %}
 {% include '/includes/nav.html' %}
 <div class="mainProfileDiv">
-    <h1>{{user.username}}'s Current Team:</h1>
+    <h1>{{current_user.username}}'s Current Team:</h1>
     <div class="innerProfileDiv">
-        {% for poke in team %}
-        {% with sprite=poke.sprite, 
-            pokemonName=poke.name, 
-            ability=poke.ability, 
-            hp=poke.hp, 
-            att=poke.att, 
-            df=poke.df 
-            %}
-            {% include '/includes/card.html' %}
+        {% for poke in current_user.team %}
+            {% with sprite=poke.sprite,
+            pokemonName=poke.name,
+            ability=poke.ability,
+            hp=poke.hp,
+            att=poke.att,
+            df=poke.df %}
+                {% include '/includes/card.html' %}
             {% endwith %}
         {% endfor %}
     </div>

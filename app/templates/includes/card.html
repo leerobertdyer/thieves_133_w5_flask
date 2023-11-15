@@ -1,21 +1,25 @@
 {% block styles %}
-<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 <link rel="stylesheet" href="../static/styles/card.css">
 {% endblock %}
 
 {% block content %}
-<div class="top"></div>
-<article class="mw5 center bg-green br3 pa3 pa4-ns mv3 ba b--black-6 shadow-5 flex flex-column items-center justify-center">
-    <div class="tc">
+<div class="outerCard">
+<article class="mainCard">
+    <div class="spriteContainer">
       <img src={{ sprite }} class="sprite br-100 h3 w3 dib" title={{pokemonName}}>
-      <h1 class="f2 ma0 white">{{pokemonName}}</h1>
-      <hr class="mw3 bb bw1 b--black-10">
+      <h2 class="titles">{{pokemonName}}</h2>
+      <hr class="myLine">
     </div>
-  <h3 class="ma0 pa2 ba b--black-10">Ability: {{ability}}</h3>
-  <div class="flex flex-row items-center justify-center">
-  <h3 class="ph3">HP: {{ hp }}</h3>
-  <h3 class="ph3">ATT: {{ att }}</h3> 
-  <h3 class="ph3">DEF: {{ df }}</h3>
+  <h3 class="titles">Ability:</h3>
+  <p class="ability">"{{ability}}"</p>
+  <div class="statsContainer">
+  <h4 class="stats">HP: {{ hp }}</h4>
+  <h4 class="stats">ATT: {{ att }}</h4> 
+  <h5 class="stats">DEF: {{ df }}</h5>
 </div>
   </article>
+  <a class="deleteLink" href="{{url_for('main.delete', pokemon=pokemonName)}}"><button 
+    class="delete">Set Free</button></a>
+  
+</div>
   {% endblock %}

@@ -8,40 +8,39 @@ from app.models import db, Pokemon, User
 @main.route('/', methods=['GET', 'POST'])
 @main.route('/home', methods=['GET', 'POST'])
 def home():
-    form = selectPokemon
+    form = selectPokemon()
     if current_user.is_authenticated:
         return redirect(url_for('main.profile', form=form))
     else:
         return redirect(url_for('auth.login'))
     
-@main.route('/card') #Unneeded route
-def card():
-    pokemonName = "Charizar"
-    return render_template('/includes/card.html', pokemonName=pokemonName)
-
 @main.route('/profile', methods=["GET", "POST"])
 @login_required
 def profile():
     if current_user.is_authenticated:
         user = User.query.get(current_user.id)
         team = user.team
+        print('team: ', team)
+        for poke in team:
+            print(poke)
         all_pokemons = Pokemon.query.all()
-        print(all_pokemons)
-        print(team)
+        print('all_pokemons: ', all_pokemons)
         form = selectPokemon()
         if request.method == 'POST':
             pokemonName = request.form['pokemon'].lower()
-            if len(team) > 5:
+            pokemonExists = any(pokemonName == pokemon.name for pokemon in team)
+            pokemonFound = any(pokemonName == pokemon.name for pokemon in all_pokemons)
+            if user.team.count() > 5:
                 flash(f"{user.username}'s team is full!", 'danger') 
                 return render_template('profile.html', form=form)
-            if pokemonName in team:
+            if pokemonExists:
                 flash(f"{pokemonName} is already on your team! Try another...", 'warning')
-                return redirect(url_for('main.profile'))    
-            elif pokemonName in all_pokemons:
-                user = User.query.get(current_user.id)
+                return render_template('profile.html', form=form) 
+            elif pokemonFound:
                 pokemon = Pokemon.query.get(pokemonName)
-                #ADD TO THE USERS TEAM
-                #RETURN A RENDER OF THE PROFILE WITH NEW TEAM  
+                user.team.append(pokemon)
+                db.session.commit()
+                return render_template('profile.html', form=form)
             else:
                 r = requests.get('https://pokeapi.co/api/v2/pokemon/?limit=1292')
                 data = r.json()['results']
@@ -57,12 +56,30 @@ def profile():
                     hp = statsGrabber['stats'][0]['base_stat']
                     att = statsGrabber['stats'][1]['base_stat']
                     df = statsGrabber['stats'][2]['base_stat'] #NEED TO ADD THE DATABASE STUFF HERE...
-                    
-                    return render_template('profile.html', user=user, pokemonName=pokemonName, sprite=sprite, ability=ability, hp=hp, att=att, df=df, loggedIn=True, form=form)
+                    pokemon = Pokemon(
+                        name=pokemonName,
+                        sprite=sprite,
+                        ability=ability,
+                        hp=hp,
+                        att=att,
+                        df=df
+                    )
+                    user.team.append(pokemon)
+                    db.session.commit()
+                    return render_template('profile.html', form=form)
                 else:
-                    return render_template('holyshit.html')
+                    return render_template('holyshit.html', pokemonName=pokemonName)
         else:
-            return render_template('profile.html', form=form, team=team, user=user)        
+            return render_template('profile.html', form=form)        
     else:
         return redirect(url_for('auth.login'))
 
+@main.route('/delete/<pokemon>')
+@login_required
+def delete(pokemon):
+    teamMember = Pokemon.query.get(pokemon)
+    if teamMember:
+        current_user.team.remove(teamMember)
+        db.session.commit()
+        flash(f"You have released the {teamMember.name}!", 'danger')
+        return redirect(url_for('main.home'))
