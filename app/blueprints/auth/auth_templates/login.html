@@ -5,11 +5,12 @@
 {% extends 'base.html'%}
 
 {% block content %}
-{% include 'nav.html'%}
+{% include '/includes/nav.html'%}
 <div class="background">
-    <form method="POST" class="signupForm ">
+    <form method="POST" class="signupForm loginForm">
         <h1 class="header">Login</h1>
         {{ form.hidden_tag() }}
+        <div class="loginBackground">
         <div class="organizeForm">
             <label for="login_email">Email:</label>
             {{ form.email(class="signupInput", placeholder="Richard@yahoo.com", id="login_email") }}
@@ -19,7 +20,7 @@
             {{ form.password(class="signupInput", placeholder="keep it secret", id="login_password") }}
         </div>
         {{ form.submit(class="loginButton") }}
-    
+    </div>
     </form>
 </div>
 {% endblock %}

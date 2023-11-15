@@ -10,16 +10,15 @@ from werkzeug.security import check_password_hash
 def signup():
     form = SignupForm()
     if request.method == "POST" and form.validate_on_submit():
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
+        username = request.form['username']
         email = request.form['email']
         password = request.form['password']
 
-        user = User(first_name, last_name, email, password)
+        user = User(username, email, password)
         db.session.add(user)
         db.session.commit()
         
-        flash(f'Hello {user.first_name}, thanks for signing up!', 'success')
+        flash(f'Hello {user.username}, thanks for signing up!', 'success')
         return redirect(url_for('auth.login'))
         
     else:
@@ -38,7 +37,7 @@ def login():
 
         if queried_user and check_password_hash(queried_user.password, password):
             login_user(queried_user)
-            flash(f'Hello {queried_user.first_name}', 'success') 
+            flash(f'Hello {queried_user.username}', 'success') 
             return redirect(url_for('main.profile'))
         else:
             flash('No Such User', 'danger')

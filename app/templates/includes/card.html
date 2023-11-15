@@ -3,22 +3,19 @@
 <link rel="stylesheet" href="../static/styles/card.css">
 {% endblock %}
 
-{% extends 'base.html' %}
-{% include 'nav.html' %}
 {% block content %}
-
 <div class="top"></div>
 <article class="mw5 center bg-green br3 pa3 pa4-ns mv3 ba b--black-6 shadow-5 flex flex-column items-center justify-center">
     <div class="tc">
-      <img src={{ stats['sprites']['other']['official-artwork']['front_default'] }} class="sprite br-100 h3 w3 dib" title={{pokemonName}}>
+      <img src={{ sprite }} class="sprite br-100 h3 w3 dib" title={{pokemonName}}>
       <h1 class="f2 ma0 white">{{pokemonName}}</h1>
       <hr class="mw3 bb bw1 b--black-10">
     </div>
-  <h3 class="ma0 pa2 ba b--black-10">Ability: {{stats.abilities[0].ability.name}}</h3>
+  <h3 class="ma0 pa2 ba b--black-10">Ability: {{ability}}</h3>
   <div class="flex flex-row items-center justify-center">
-  <h3 class="ph3">HP: {{ stats['stats'][0]['base_stat'] }}</h3>
-  <h3 class="ph3">ATT: {{ stats['stats'][1]['base_stat']}}</h3> 
-  <h3 class="ph3">DEF: {{ stats['stats'][2]['base_stat']}}</h3>
+  <h3 class="ph3">HP: {{ hp }}</h3>
+  <h3 class="ph3">ATT: {{ att }}</h3> 
+  <h3 class="ph3">DEF: {{ df }}</h3>
 </div>
   </article>
   {% endblock %}

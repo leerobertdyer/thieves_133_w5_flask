@@ -2,18 +2,10 @@
 <link rel="stylesheet" href="../static/styles/pokemonForm.css">
 {% endblock %}
 
-{% extends 'base.html' %}
-
-{% block title %}
-PokeBattle!
-{% endblock %}
-
 {% block content %}
-
-{% include 'nav.html' %}
 <div class="top"></div>
     <div class="pokemonFormContainer">
-        <h1 class="greeting">Choose A Pokemon!</h1>
+        <h1 class="greeting">Catch A Pokemon!</h1>
 
         <form method="POST" class="pokemonForm">
             {{ form.hidden_tag() }}
@@ -22,5 +14,5 @@ PokeBattle!
                 {{ form.submit(class="pokemonInput submit") }}
         </form>
 
-</div>
+    </div>
 {% endblock %}
