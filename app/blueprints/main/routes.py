@@ -20,9 +20,6 @@ def profile():
     if current_user.is_authenticated:
         user = User.query.get(current_user.id)
         team = user.team
-        print('team: ', team)
-        for poke in team:
-            print(poke)
         all_pokemons = Pokemon.query.all()
         print('all_pokemons: ', all_pokemons)
         form = selectPokemon()
@@ -31,6 +28,7 @@ def profile():
             pokemonExists = any(pokemonName == pokemon.name for pokemon in team)
             pokemonFound = any(pokemonName == pokemon.name for pokemon in all_pokemons)
             if user.team.count() > 5:
+                print("right here", user.team.count())
                 flash(f"{user.username}'s team is full!", 'danger') 
                 return render_template('profile.html', form=form)
             if pokemonExists:
@@ -83,3 +81,7 @@ def delete(pokemon):
         db.session.commit()
         flash(f"You have released the {teamMember.name}!", 'danger')
         return redirect(url_for('main.home'))
+
+@main.route('/fight<team>')
+def fight(team):
+    return render_template('fight.html')

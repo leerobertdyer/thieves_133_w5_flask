@@ -6,7 +6,7 @@
 
 {% block content %}
 {% include '/includes/nav.html' %}
-<div class="mainProfileDiv">
+<div class="mainProfileDiv {% if current_user.team.count() == 6 %}ready{% endif %}">
     <h1>{{current_user.username}}'s Current Team:</h1>
     <div class="innerProfileDiv">
         {% for poke in current_user.team %}
