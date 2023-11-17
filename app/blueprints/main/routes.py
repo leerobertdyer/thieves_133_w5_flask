@@ -15,7 +15,6 @@ def home():
         return redirect(url_for('auth.login'))
     
 @main.route('/profile', methods=["GET", "POST"])
-@login_required
 def profile():
     if current_user.is_authenticated:
         user = User.query.get(current_user.id)

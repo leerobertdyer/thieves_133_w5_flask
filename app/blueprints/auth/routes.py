@@ -3,7 +3,7 @@ from . import auth
 import requests
 from flask import request, redirect, url_for, render_template, flash
 from app.models import User, db
-from flask_login import current_user, login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash
 
 @auth.route('/signup', methods=["GET", "POST"])
