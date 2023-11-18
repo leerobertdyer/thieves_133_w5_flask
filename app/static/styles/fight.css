@@ -1,4 +1,11 @@
 * {
+    background-color: rgb(243, 151, 151);
+    color: rgb(105, 3, 1);
+}
+
+.mainFightDiv {
     background-color: black;
-    color: antiquewhite;
+    width: 95vw;
+    height: 95vh;
+    border: dashed white 3px;
 }

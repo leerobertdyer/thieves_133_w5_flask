@@ -82,3 +82,8 @@ def delete(pokemon):
         db.session.commit()
         flash(f"You have released the {teamMember.name}!", 'danger')
         return redirect(url_for('main.home'))
+    
+@main.route('/fight', methods=["GET", "POST"])
+@login_required
+def fight():
+    return render_template('fight.html')

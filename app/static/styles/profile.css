@@ -21,6 +21,23 @@
     align-items: center;
 }
 
-.ready {
+.fight {
     border: red solid 7px;
+    animation: fighting 2.5s linear none infinite;
+}
+
+.fightLink {
+    color: rgb(204, 0, 0);
+    text-decoration: underline;
+}
+
+@keyframes fighting {
+    0% {
+        border: red solid 7px;
+    }
+
+    50% {
+        border: orange solid 16px;
+        padding: 0;
+    }   
 }
