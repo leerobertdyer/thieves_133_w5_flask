@@ -13,7 +13,8 @@
 }
 
 .waitingTitle {
-    margin-top: -50px;
+    position: relative;
+    margin-top: 0;
     background-color: rgba(246, 224, 196, .9);
     padding: 30px;
     border-radius: 20px;
