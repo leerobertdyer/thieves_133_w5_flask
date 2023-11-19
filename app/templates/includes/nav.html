@@ -6,7 +6,9 @@
 <header class="bg-black fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l myHeader">
     <nav class="f6 fw6 ttu tracked navContainer">
       <a class="link dim white mr3 navLink bigger" href="/" title="Home">Home</a>
+      {% if not current_user.username%}
       <a class="link dim white mr3 navLink" href="/signup" title="signup">Sign Up</a>
+      {% endif %}
       <a class="link dim white mr3 navLink" href="/profile" title="profile">Profile</a>
       {% if current_user.is_authenticated %}
           <a class="link dim white mr3 navLink" href="/logout" title="logout">Logout</a>
