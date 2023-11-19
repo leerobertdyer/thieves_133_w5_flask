@@ -38,3 +38,13 @@ class Pokemon(db.Model):
     att = db.Column(db.String, nullable=False)
     df = db.Column(db.String, nullable=False)
     date_pokemon_added = db.Column(db.DateTime, default=datetime.utcnow())
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "sprite": self.sprite,
+            "ability": self.ability,
+            "hp": int(self.hp),
+            "att": int(self.att),
+            "df": int(self.df)
+        }

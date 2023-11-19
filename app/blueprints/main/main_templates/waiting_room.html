@@ -1,0 +1,29 @@
+{% block styles %}
+<link rel="stylesheet" href="../static/styles/waiting_room.css">
+{% endblock %}
+
+{% extends 'base.html'%}
+
+{% block content %}
+{% include '/includes/nav.html'%}
+<div class="mainWaitingRoom">
+    <h1 class="waitingTitle">WAITING ROOM</h1>
+{% for player,team in readyPlayers.items() %}
+    {% if player != current_user.username %}
+        <div class="eachPlayer">
+            <h1>{{player}}</h1>
+            <p class="team">{{team}}</p>
+            <a 
+            class="waitingRoomButton"
+            href="{{url_for('main.fight', opponent=player) }}"
+            >FIGHT ME</a>
+        </div>
+    {% endif %}
+{% endfor %}
+{% if readyPlayers|length < 2%}
+<div class="emptyRoom">
+    Sorry, no one has enough Pokemon on their team yet!
+</div>
+{% endif %}
+</div>
+{% endblock %}

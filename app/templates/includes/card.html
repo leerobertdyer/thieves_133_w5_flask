@@ -11,15 +11,16 @@
       <hr class="myLine">
     </div>
   <h3 class="titles">Ability:</h3>
-  <p class="ability">"{{ability}}"</p>
+  <p class="ability">"{{ ability }}"</p>
   <div class="statsContainer">
   <h4 class="stats">HP: {{ hp }}</h4>
   <h4 class="stats">ATT: {{ att }}</h4> 
   <h5 class="stats">DEF: {{ df }}</h5>
 </div>
   </article>
+  {% if showDeleteLink %}
   <a class="deleteLink" href="{{url_for('main.delete', pokemon=pokemonName)}}"><button 
     class="delete">Set Free</button></a>
-  
+  {% endif %}
 </div>
   {% endblock %}

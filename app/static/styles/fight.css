@@ -1,11 +1,85 @@
-* {
-    background-color: rgb(243, 151, 151);
-    color: rgb(105, 3, 1);
-}
+
 
 .mainFightDiv {
-    background-color: black;
+    background:
+    radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
+    radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
+    radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+    radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+    radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+    radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
+    radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+    radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+    linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
+    linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+    background-color: #300;
+    background-size: 100px 100px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring {
     width: 95vw;
     height: 95vh;
-    border: dashed white 3px;
+    border-radius: 18px;
+    border: solid rgb(190, 138, 6) 5px;
+    color: black;
+    background-image: url('../images/boxingRing.jpeg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.teamNames {
+    background-color: white;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.mainInnerFight {
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+
+.vs, h3 {
+    font-size: 7em;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fightButton {
+    height: 25px;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1em;
+}
+
+.attack {
+    border-radius: 8px;
+    height: 25px;
+    width: 30%;
+    background-color: #300;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border: solid white 2px;
+    margin-bottom: 60px;
+}
+
+.bigRedX {
+border: red dashed 5px;
+width: 100%;
 }

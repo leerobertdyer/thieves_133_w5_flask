@@ -1,15 +1,56 @@
 {% block styles %}
-<link rel="stylesheet" href="../static/styles/profile.css">
-{% endblock %}
-
-{% block title %}
-FIGHT!
+<link rel="stylesheet" href="../static/styles/fight.css">
 {% endblock %}
 
 {% extends 'base.html'%}
 
 {% block content %}
-{% include '/includes/nav.html' %}
 
-{% include '/includes/search.html' %}
+<div class="mainFightDiv">
+    <div class="ring">
+    <div class="teamNames">
+        {{current_user.username}} VS {{opponent}}
+    </div>
+    <div class="mainInnerFight">
+        <div class="leftFighter">
+            {% if xDiv == 'p1' %}
+                <div class="bigRedX">
+            {% endif %}
+            {% with sprite=p1.sprite,
+                pokemonName=p1.name,
+                ablity=p1.ability,
+                hp=p1.hp,
+                att=p1.att,
+                df=p1.df,
+                showDeleteLink=False %}
+                {% include '/includes/card.html' %}
+                {% endwith %}
+            </div>
+        {% if xDiv == 'p1' %}
+            </div>
+        {% endif %}
+            <div class="vs">
+                VS
+            </div>
+            <div class="rightFighter">
+                {% if xDiv == 'p2' %}
+                    <div class="bigRedX">
+                 {% endif %}
+                {% with sprite=p2.sprite,
+                    pokemonName=p2.name,
+                    ablity=p2.ability,
+                    hp=p2.hp,
+                    att=p2.att,
+                    df=p2.df,
+                    showDeleteLink=False %}
+                    {% include '/includes/card.html' %}
+                    {% endwith %}
+                </div>
+        {% if xDiv == 'p2' %}
+            </div>
+        {% endif %}
+    </div>
+    <a class="attack" href="{{url_for('main.fight', opponent=opponent)}}">ATTACK!</a>
+</div>
+</div>
 {% endblock %}

@@ -9,7 +9,7 @@
 <div class="mainProfileDiv {% if current_user.team.count() > 5%} fight {% endif %}">
     <h1>
         {% if current_user.team.count() > 5%}
-            Let's <a class='fightLink' href="{{url_for('main.fight')}}">fight!</a>
+            Let's <a class='fightLink' href="{{url_for('main.waiting_room')}}">fight!</a>
         {% else %}
             {{current_user.username}}'s Current Team:
         {% endif %}
@@ -21,7 +21,8 @@
         ability=poke.ability,
         hp=poke.hp,
         att=poke.att,
-        df=poke.df %}
+        df=poke.df,
+        showDeleteLink=True %}
         {% include '/includes/card.html' %}
         {% endwith %}
         {% endfor %}

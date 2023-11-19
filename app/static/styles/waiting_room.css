@@ -1,0 +1,61 @@
+
+.mainWaitingRoom {
+    background-image: url(../images/dirtyCouch.jpeg);
+    background-size: 400px;
+    background-repeat: repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100wh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.waitingTitle {
+    margin-top: -50px;
+    background-color: rgba(246, 224, 196, .9);
+    padding: 30px;
+    border-radius: 20px;
+    border: black solid 2px;
+}
+
+.eachPlayer {
+    background-color: rgba(235, 169, 180, .9);
+    color: black;
+    border-radius: 12px;
+    border: brown;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team {
+    background-color: rgba(250, 235, 215, .8);
+    padding: 10px;
+    border-radius: 12px;
+    font-size: .8em;
+}
+
+.waitingRoomButton {
+    color: red;
+    background-color: black;
+    border-radius: 6px;
+    padding: 5px;
+    border: goldenrod 2px solid;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.waitingRoomButton:hover {
+    background-color: antiquewhite;
+}
+
+.emptyRoom {
+    background-color: rgb(255, 120, 120);
+    padding: 20px;
+    border-radius: 22px;
+}
